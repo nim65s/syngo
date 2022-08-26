@@ -2,7 +2,6 @@
 
 [![Tests](https://github.com/nim65s/syngo/actions/workflows/test.yml/badge.svg)](https://github.com/nim65s/syngo/actions/workflows/test.yml)
 [![Lints](https://github.com/nim65s/syngo/actions/workflows/lint.yml/badge.svg)](https://github.com/nim65s/syngo/actions/workflows/lint.yml)
-[![Docker-Hub](https://github.com/nim65s/syngo/actions/workflows/docker-hub.yml/badge.svg)](https://hub.docker.com/r/nim65s/syngo)
 [![Release](https://github.com/nim65s/syngo/actions/workflows/release.yml/badge.svg)](https://pypi.org/project/syngo/)
 [![pre-commit.ci status](https://results.pre-commit.ci/badge/github/nim65s/syngo/main.svg)](https://results.pre-commit.ci/latest/github/nim65s/syngo/main)
 
