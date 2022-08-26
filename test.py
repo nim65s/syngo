@@ -99,4 +99,4 @@ if __name__ == "__main__":
     fields = ["asctime", "name", "lineno", "levelname", "message"]
     log_format = " - ".join([f"%({field})s" for field in fields])
     logging.basicConfig(level=50 - 10 * args.verbose, format=log_format)
-    exit(not run_and_test())
+    exit(run_and_test())
