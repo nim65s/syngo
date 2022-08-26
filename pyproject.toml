@@ -4,6 +4,12 @@ version = "0.1.0"
 description = "Synapse admin from Django"
 authors = ["Guilhem Saurel <guilhem.saurel@laas.fr>"]
 license = "BSD-2-Clause"
+readme = "README.md"
+homepage = "https://github.com/nim65s/syngo"
+repository = "https://github.com/nim65s/syngo.git"
+
+[tool.poetry.urls]
+changelog = "https://github.com/nim65s/syngo/blob/main/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^3.7"
@@ -15,6 +21,13 @@ black = "^22.6.0"
 flake8 = "^5.0.4"
 pre-commit = "^2.20.0"
 ipython = "^7.0.0"
+
+[tool.black]
+target-version = ['py37']
+
+[tool.coverage.run]
+source = ["ndh"]
+omit = ["*/migrations/*", "*/wsgi.py", "*/apps.py"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
