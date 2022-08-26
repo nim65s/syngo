@@ -30,7 +30,7 @@ RUN chown -R 991:991 . \
  && echo "registration_requires_token: true" >> homeserver.yaml \
  && python -m synapse.app.homeserver --config-path homeserver.yaml --generate-keys
 
-RUN pip install --no-cache-dir httpx matrix-nio coverage django
+RUN pip install --no-cache-dir httpx matrix-nio coverage[toml] django
 
 WORKDIR /app
 

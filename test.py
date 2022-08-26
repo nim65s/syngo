@@ -83,7 +83,7 @@ def run_and_test():
 
     # Run tests
     LOGGER.info("Runnig unittests")
-    ret = check_call(["./manage.py", "test"])
+    check_call(["coverage", "run", "./manage.py", "test"])
 
     LOGGER.info("Stopping synapse")
     srv.terminate()
@@ -91,7 +91,6 @@ def run_and_test():
     LOGGER.info("Processing coverage")
     for cmd in ["report", "html", "xml"]:
         run(["coverage", cmd])
-    return ret
 
 
 if __name__ == "__main__":
@@ -99,4 +98,4 @@ if __name__ == "__main__":
     fields = ["asctime", "name", "lineno", "levelname", "message"]
     log_format = " - ".join([f"%({field})s" for field in fields])
     logging.basicConfig(level=50 - 10 * args.verbose, format=log_format)
-    exit(run_and_test())
+    run_and_test()

@@ -26,8 +26,7 @@ ipython = "^7.0.0"
 target-version = ['py37']
 
 [tool.coverage.run]
-source = ["ndh"]
-omit = ["*/migrations/*", "*/wsgi.py", "*/apps.py"]
+source = ["syngo"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
