@@ -7,11 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.1.1] - 2022-08-26
+
 - fix initial changelog, tests result code, CI, README, coverage, and release
 
 ## [v0.1.0] - 2022-08-26
 
 - Initial version
 
-[Unreleased]: https://github.com/nim65s/syngo/compare/v0.1.0...main
+[Unreleased]: https://github.com/nim65s/syngo/compare/v0.1.1...main
+[v0.1.1]: https://github.com/nim65s/dmdm/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/nim65s/syngo/releases/tag/v0.1.0
