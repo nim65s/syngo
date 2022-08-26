@@ -14,6 +14,8 @@ changelog = "https://github.com/nim65s/syngo/blob/main/CHANGELOG.md"
 [tool.poetry.dependencies]
 python = "^3.7"
 Django = "^3.2"
+captcha = "^0.4"
+httpx = "^0.23.0"
 
 [tool.poetry.dev-dependencies]
 coverage = "^6.4.4"
