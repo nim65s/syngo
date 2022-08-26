@@ -26,3 +26,9 @@ class SyngoTest(TestCase):
         # Test deactivate
         syngo.deactivate(user)
         self.assertEqual(len(syngo.list_accounts()), 1)
+
+        # Test registration token
+        ret = syngo.registration_token().json()
+        self.assertEqual(len(ret["token"]), 16)
+        self.assertEqual(ret["uses_allowed"], 1)
+        self.assertEqual(ret["completed"], 0)

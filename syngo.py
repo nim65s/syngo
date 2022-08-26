@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from django.conf import settings
 
 import httpx
@@ -62,4 +64,16 @@ def deactivate(django_user):
     user_id = django_to_matrix(django_user)
     return req(
         f"/_synapse/admin/v1/deactivate/{user_id}", method="post", json={"erase": True}
+    )
+
+
+def registration_token():
+    """Create a registration token."""
+    tomorrow = datetime.now() + timedelta(days=1)
+    tomorrow = int(tomorrow.timestamp() * 1000)
+
+    return req(
+        "/_synapse/admin/v1/registration_tokens/new",
+        method="post",
+        json={"uses_allowed": 1, "expiry_time": tomorrow},
     )
