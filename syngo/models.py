@@ -10,7 +10,7 @@ from captcha.image import ImageCaptcha
 class Captcha(models.Model):
     LEN = 5
     secret = models.CharField(max_length=LEN)
-    image = models.ImageField(blank=True)
+    image = models.ImageField(blank=True, upload_to="syngo/")
 
     def get_absolute_url(self):
         return reverse("syngo:check", kwargs={"pk": self.pk})
