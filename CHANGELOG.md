@@ -7,7 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- add shadow-(un)ban
+- add shadow-(un)ban, deactivate
 
 ## [v0.1.1] - 2022-08-26
 
