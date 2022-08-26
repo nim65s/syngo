@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  tests:
+    build: .
+    entrypoint: ""
+    env_file:
+      - .env
+    volumes:
+      - ./:/app
