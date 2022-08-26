@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "syngo",
+    "testproject",
 ]
 
 MIDDLEWARE = [
@@ -127,5 +127,6 @@ STATIC_URL = "/static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-SYNGO_SYNAPSE_URL = "http://tests"
-SYNGO_ACCESS_TOKEN = os.environ.get("SYNGO_ACCESS_TOKEN")
+SYNGO_ACCESS_TOKEN = os.environ["MATRIX_ACCESS_TOKEN"]
+SYNGO_MATRIX_URL = os.environ["MATRIX_URL"]  # http://full.qualified.domain.name
+SYNGO_MATRIX_DOMAIN = os.environ["MATRIX_DOMAIN"]  # domain.name

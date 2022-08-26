@@ -78,7 +78,8 @@ def run_and_test():
 
     # Get its access_token
     LOGGER.info("Get access token")
-    environ["SYNGO_ACCESS_TOKEN"] = asyncio.run(get_access_token())
+    environ["MATRIX_ACCESS_TOKEN"] = asyncio.run(get_access_token())
+    environ["MATRIX_DOMAIN"] = "tests"
 
     # Run tests
     LOGGER.info("Runnig unittests")
