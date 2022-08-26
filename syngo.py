@@ -9,17 +9,25 @@ def req(url, method="get", auth=True, **kwargs):
     return getattr(httpx, method)(f"{settings.SYNGO_MATRIX_URL}{url}", **kwargs)
 
 
-def register(user):
+def django_to_matrix(user):
+    """Get the matrix id associated to a django user."""
+    return f"@{user.username}:{settings.SYNGO_MATRIX_DOMAIN}"
+
+
+def register(django_user):
+    """Register a Django user into a Matrix homeserver."""
     # https://matrix-org.github.io/synapse/latest/admin_api/user_admin_api.html
     # create-or-modify-account
+    user_id = django_to_matrix(django_user)
     return req(
-        f"/_synapse/admin/v2/users/@{user.username}:{settings.SYNGO_MATRIX_DOMAIN}",
+        f"/_synapse/admin/v2/users/{user_id}",
         method="put",
-        json={"displayname": str(user)},
+        json={"displayname": str(django_user)},
     )
 
 
 def list_accounts(guests=False):
+    """List accounts on a Matrix homeserver."""
     # https://matrix-org.github.io/synapse/latest/admin_api/user_admin_api.html
     # list-accounts
     accounts = []
@@ -35,3 +43,11 @@ def list_accounts(guests=False):
         else:
             break
     return accounts
+
+
+def shadow_ban(user_id, unban=False):
+    """Shadow-(un)ban an user."""
+    return req(
+        f"/_synapse/admin/v1/users/{user_id}/shadow_ban",
+        method="delete" if unban else "post",
+    )
