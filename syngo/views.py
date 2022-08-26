@@ -13,7 +13,6 @@ def check(request, pk):
     if request.POST:
         if request.POST.get("guess", "").lower() == captcha.secret.lower():
             captcha.delete()
-            return render(
-                request, "syngo/success.html", {"token": registration_token()["token"]}
-            )
+            token = registration_token().json()["token"]
+            return render(request, "syngo/success.html", {"token": token})
     return render(request, "syngo/check.html", {"captcha": captcha})

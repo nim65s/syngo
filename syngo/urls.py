@@ -9,6 +9,6 @@ urlpatterns = [
     path("", views.generate, name="generate"),
     path("<int:pk>", views.check, name="check"),
 ]
-if settings.DEBUG:
+if settings.DEBUG:  # pragma: no cover
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,6 +2,7 @@ from random import sample
 from string import ascii_uppercase
 
 from django.db import models
+from django.urls import reverse
 
 from captcha.image import ImageCaptcha
 
@@ -10,6 +11,9 @@ class Captcha(models.Model):
     LEN = 5
     secret = models.CharField(max_length=LEN)
     image = models.ImageField(blank=True)
+
+    def get_absolute_url(self):
+        return reverse("syngo:check", kwargs={"pk": self.pk})
 
     def create_image(self):
         name = f"{self.id}.png"
