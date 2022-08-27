@@ -9,6 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - add shadow-(un)ban, deactivate, registration token
 - add captcha models / views / urls / tests
+- add stagging setup
 
 ## [v0.1.1] - 2022-08-26
 

@@ -11,7 +11,7 @@ CMD while ! nc -z postgres 5432; do sleep 1; done \
  && ./manage.py collectstatic --no-input \
  && gunicorn \
     --bind 0.0.0.0 \
-    syngo.wsgi
+    testproject.wsgi
 
 RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     --mount=type=cache,sharing=locked,target=/var/lib/apt \
