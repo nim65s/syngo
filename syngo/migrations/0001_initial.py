@@ -7,16 +7,23 @@ class Migration(migrations.Migration):
 
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Captcha',
+            name="Captcha",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('secret', models.CharField(max_length=5)),
-                ('image', models.ImageField(blank=True, upload_to='syngo/')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("secret", models.CharField(max_length=5)),
+                ("image", models.ImageField(blank=True, upload_to="syngo/")),
             ],
         ),
     ]
