@@ -6,8 +6,8 @@ from . import views
 
 app_name = "syngo"
 urlpatterns = [
-    path("", views.generate, name="generate"),
-    path("<int:pk>", views.check, name="check"),
+    path("captcha/", views.generate, name="generate"),
+    path("captcha/<int:pk>", views.check, name="check"),
 ]
 if settings.DEBUG:  # pragma: no cover
     urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
