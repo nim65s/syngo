@@ -4,7 +4,9 @@ services:
   tests:
     build: .
     entrypoint: ""
-    env_file:
-      - .env
+    environment:
+      MATRIX_URL: http://tests
+      MATRIX_ID: bot
+      MATRIX_PW: pw
     volumes:
       - ./:/app
