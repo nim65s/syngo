@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [v0.2.0] - 2022-08-27
+
 - add shadow-(un)ban, deactivate, registration token
 - add captcha models / views / urls / tests
 - add stagging setup
@@ -19,6 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial version
 
-[Unreleased]: https://github.com/nim65s/syngo/compare/v0.1.1...main
+[Unreleased]: https://github.com/nim65s/syngo/compare/v0.2.0...main
+[v0.2.0]: https://github.com/nim65s/dmdm/compare/v0.1.1...v0.2.0
 [v0.1.1]: https://github.com/nim65s/dmdm/compare/v0.1.0...v0.1.1
 [v0.1.0]: https://github.com/nim65s/syngo/releases/tag/v0.1.0
