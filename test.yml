@@ -2,7 +2,9 @@ version: '3'
 
 services:
   tests:
-    build: .
+    build:
+      context: .
+      dockerfile: test.Dockerfile
     entrypoint: ""
     environment:
       MATRIX_URL: http://tests
