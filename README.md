@@ -10,7 +10,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a0783da8c0461fe95eaf/maintainability)](https://codeclimate.com/github/nim65s/syngo/maintainability)
 [![PyPI version](https://badge.fury.io/py/syngo.svg)](https://badge.fury.io/py/syngo)
 
-Manage Synapse accounts creation from Django
+Manage Synapse from Django
 
 ## Install
 

@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "syngo"
 version = "0.1.1"
-description = "Synapse admin from Django"
+description = "Manage Synapse from Django"
 authors = ["Guilhem Saurel <guilhem.saurel@laas.fr>"]
 license = "BSD-2-Clause"
 readme = "README.md"
