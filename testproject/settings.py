@@ -138,15 +138,16 @@ STATIC_URL = "/static/"
 STATIC_ROOT = f"/srv/{PROJECT}/static/"
 LOGIN_REDIRECT_URL = "/"
 
+EMAIL_DOMAIN_NAME = os.environ.get("EMAIL_DOMAIN_NAME", DOMAIN_NAME)
 EMAIL_USE_SSL = True
 EMAIL_PORT = 465
 EMAIL_HOST = "mail.gandi.net"
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", f"majo@{DOMAIN_NAME}")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", f"majo@{EMAIL_DOMAIN_NAME}")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", None)
 DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>"
 SERVER_EMAIL = f"Server {DEFAULT_FROM_EMAIL}"
-REPLY_TO = f"webmaster@{DOMAIN_NAME}"
-ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{DOMAIN_NAME}")]
+REPLY_TO = f"webmaster@{EMAIL_DOMAIN_NAME}"
+ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{EMAIL_DOMAIN_NAME}")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
