@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.urls import reverse
@@ -48,3 +49,13 @@ class SyngoTest(TestCase):
 
         ok = self.client.post(r.url, {"guess": generated.secret})
         self.assertIn("Success !", ok.content.decode())
+
+    def test_user_id(self):
+        User = get_user_model()
+        alice = User.objects.create(username="alice", password="alice")
+        self.assertEqual(
+            syngo.get_user_id(alice), f"@alice:{settings.SYNGO_MATRIX_DOMAIN}"
+        )
+
+        bob = f"@bob:{settings.SYNGO_MATRIX_DOMAIN}"
+        self.assertEqual(syngo.get_user_id(bob), bob)

@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+- `django_to_matrix` → `get_user_id`
+
 ## [v0.2.0] - 2022-08-27
 
 - add shadow-(un)ban, deactivate, registration token
