@@ -36,19 +36,15 @@ def list_accounts(guests=False):
     # https://matrix-org.github.io/synapse/latest/admin_api/user_admin_api.html
     # list-accounts
     accounts = []
-    next_token = 0
-    while True:
+    ret = {"next_token": 0}
+    while "next_token" in ret:
         ret = req(
             "/_synapse/admin/v2/users",
-            params={"from": next_token, "limit": 10, "guests": guests},
+            params={"from": ret["next_token"], "limit": 10, "guests": guests},
         ).json()
         if "users" not in ret:  # pragma: no cover
             raise ValueError(f"Invalid response: {ret}")
         accounts += ret["users"]
-        if "next_token" in ret:
-            next_token = ret["next_token"]
-        else:
-            break
     return accounts
 
 
