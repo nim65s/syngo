@@ -20,9 +20,9 @@ class SyngoTest(TestCase):
 
         # Test shadow_ban
         self.assertEqual(syngo.list_accounts()[1]["shadow_banned"], 0)
-        syngo.shadow_ban(syngo.django_to_matrix(user))
+        syngo.shadow_ban(user)
         self.assertEqual(syngo.list_accounts()[1]["shadow_banned"], 1)
-        syngo.shadow_ban(syngo.django_to_matrix(user), unban=True)
+        syngo.shadow_ban(user, unban=True)
         self.assertEqual(syngo.list_accounts()[1]["shadow_banned"], 0)
 
         # Test deactivate

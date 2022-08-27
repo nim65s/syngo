@@ -47,10 +47,11 @@ def list_accounts(guests=False):
     return accounts
 
 
-def shadow_ban(user_id, unban=False):
+def shadow_ban(django_user, unban=False):
     """Shadow-(un)ban an user."""
     # https://matrix-org.github.io/synapse/latest/admin_api/user_admin_api.html
     # controlling-whether-a-user-is-shadow-banned
+    user_id = django_to_matrix(django_user)
     return req(
         f"/_synapse/admin/v1/users/{user_id}/shadow_ban",
         method="delete" if unban else "post",
