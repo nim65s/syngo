@@ -39,6 +39,8 @@ def list_accounts(guests=False):
             "/_synapse/admin/v2/users",
             params={"from": next_token, "limit": 10, "guests": guests},
         ).json()
+        if "users" not in ret:  # pragma: no cover
+            raise ValueError(f"Invalid response: {ret}")
         accounts += ret["users"]
         if "next_token" in ret:
             next_token = ret["next_token"]
