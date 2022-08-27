@@ -16,29 +16,33 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+PROJECT = "syngo"
+PROJECT_VERBOSE = "SynGo"
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-wmu%jm1f-ewg9#g+r92csm_&u#mc%m(hms^=!osf2%v#y"
+DEBUG = os.environ.get("DEBUG", "True").lower() == "true"
+if DEBUG:
+    SECRET_KEY = "django-insecure-un&^-yd2(xdo#_@or@obzh)trtweg))^oegpor8@=$srjplaz1"
+else:  # pragma: no cover
+    SECRET_KEY = os.environ["SECRET_KEY"]
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = []
-
+DOMAIN_NAME = os.environ.get("DOMAIN_NAME", "localhost")
+HOSTNAME = os.environ.get("ALLOWED_HOST", f"{PROJECT}.{DOMAIN_NAME}")
+ALLOWED_HOSTS = [HOSTNAME, f"{HOSTNAME}:8000"]
+CSRF_TRUSTED_ORIGINS = [
+    ("http://" if DEBUG else "https://") + host for host in ALLOWED_HOSTS
+]
 
 # Application definition
 
 INSTALLED_APPS = [
+    PROJECT,
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "syngo",
 ]
 
 MIDDLEWARE = [
@@ -75,13 +79,21 @@ WSGI_APPLICATION = "testproject.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+DB = os.environ.get("DB", "db.sqlite3")
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
+        "NAME": BASE_DIR / DB,
     }
 }
-
+if DB == "postgres":  # pragma: no cover
+    DATABASES["default"].update(
+        ENGINE="django.db.backends.postgresql",
+        NAME=os.environ.get("POSTGRES_DB", DB),
+        USER=os.environ.get("POSTGRES_USER", DB),
+        HOST=os.environ.get("POSTGRES_HOST", DB),
+        PASSWORD=os.environ["POSTGRES_PASSWORD"],
+    )
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -120,10 +132,21 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = "/static/"
+MEDIA_ROOT = f"/srv/{PROJECT}/media/"
 MEDIA_URL = "/media/"
-STATIC_ROOT = BASE_DIR / "static"
-MEDIA_ROOT = BASE_DIR / "media"
+STATIC_URL = "/static/"
+STATIC_ROOT = f"/srv/{PROJECT}/static/"
+LOGIN_REDIRECT_URL = "/"
+
+EMAIL_USE_SSL = True
+EMAIL_PORT = 465
+EMAIL_HOST = "mail.gandi.net"
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", f"majo@{DOMAIN_NAME}")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", None)
+DEFAULT_FROM_EMAIL = f"{PROJECT_VERBOSE} <{EMAIL_HOST_USER}>"
+SERVER_EMAIL = f"Server {DEFAULT_FROM_EMAIL}"
+REPLY_TO = f"webmaster@{DOMAIN_NAME}"
+ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{DOMAIN_NAME}")]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
