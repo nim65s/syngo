@@ -154,5 +154,5 @@ ADMINS = [(f"{PROJECT_VERBOSE} Webmasters", f"webmaster@{DOMAIN_NAME}")]
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 SYNGO_ACCESS_TOKEN = os.environ["MATRIX_ACCESS_TOKEN"]
-SYNGO_MATRIX_URL = os.environ["MATRIX_URL"]  # http://full.qualified.domain.name
+SYNGO_MATRIX_URL = os.environ["MATRIX_URL"]  # protocol://full.qualified.domain.name
 SYNGO_MATRIX_DOMAIN = os.environ["MATRIX_DOMAIN"]  # domain.name
