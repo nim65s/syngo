@@ -9,6 +9,7 @@ jobs:
       - uses: actions/setup-python@v4
         with:
           python-version: 3.7
+          cache: poetry
       - name: setup
         run: poetry install --no-interaction --no-ansi
       - run: poetry run flake8 .
