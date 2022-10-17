@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10
 
 EXPOSE 8000
 
@@ -7,8 +7,8 @@ WORKDIR /app
 ENV PYTHONUNBUFFERED=1
 
 CMD while ! nc -z postgres 5432; do sleep 1; done \
- && ./manage.py migrate \
- && ./manage.py collectstatic --no-input \
+ && poetry run ./manage.py migrate \
+ && poetry run ./manage.py collectstatic --no-input \
  && gunicorn \
     --bind 0.0.0.0 \
     testproject.wsgi
@@ -22,14 +22,14 @@ RUN --mount=type=cache,sharing=locked,target=/var/cache/apt \
     libpq-dev \
     netcat \
  && python -m pip install -U pip \
+ && curl -sSL https://install.python-poetry.org | python - \
  && python -m pip install \
     gunicorn \
-    poetry \
     psycopg2 \
  && apt-get autoremove -qqy gcc
 
 ADD pyproject.toml poetry.lock ./
-RUN poetry config virtualenvs.create false --local \
- && poetry install --no-dev --no-root --no-interaction --no-ansi
+
+RUN poetry install --no-dev --no-root --no-interaction --no-ansi
 
 ADD . .
