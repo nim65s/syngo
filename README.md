@@ -21,5 +21,5 @@ python3 -m pip install syngo
 ## Unit tests
 
 ```
-docker-compose -f test.yml up --exit-code-from tests --force-recreate --build
+docker compose -f test.yml up --exit-code-from tests --force-recreate --build
 ```
