@@ -13,16 +13,16 @@ changelog = "https://github.com/nim65s/syngo/blob/main/CHANGELOG.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-Django = "^3.2"
+Django = "^5.1.2"
 captcha = "^0.4"
 httpx = "^0.23.0"
 
 [tool.poetry.dev-dependencies]
-coverage = "^6.4.4"
-black = "^22.6.0"
-flake8 = "^5.0.4"
-pre-commit = "^2.20.0"
-ipython = "^7.0.0"
+coverage = "^7.6.2"
+black = "^24.10.0"
+flake8 = "^7.1.1"
+pre-commit = "^4.0.1"
+ipython = "^8.28.0"
 
 [tool.poetry.group.dev.dependencies]
 twine = "^4.0.1"
